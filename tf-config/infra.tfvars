@@ -1,5 +1,6 @@
 aws_region  = "us-east-1"
 system_name = "develop"
+environment = "develop"
 vpc_enable_nat_gateway = true
 vpc_single_nat_gateway = true
 commontags = {
