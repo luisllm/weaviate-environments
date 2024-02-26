@@ -1549,31 +1549,31 @@ nodeSelector:
 tolerations:
 
 #original one coming from default values.yaml
-#affinity:
-#  podAntiAffinity:
-#    preferredDuringSchedulingIgnoredDuringExecution:
-#      - weight: 1
-#        podAffinityTerm:
-#          topologyKey: "kubernetes.io/hostname"
-#          labelSelector:
-#            matchExpressions:
-#              - key: "app"
-#                operator: In
-#                values:
-#                  - weaviate
-
 affinity:
   podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
+    preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         podAffinityTerm:
-          topologyKey: "kubernetes.io/zone"
+          topologyKey: "kubernetes.io/hostname"
           labelSelector:
             matchExpressions:
               - key: "app"
                 operator: In
                 values:
                   - weaviate
+
+#affinity:
+#  podAntiAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      - weight: 1
+#        podAffinityTerm:
+#          topologyKey: "kubernetes.io/zone"
+#          labelSelector:
+#            matchExpressions:
+#              - key: "app"
+#                operator: In
+#                values:
+#                  - weaviate
 
 ## Optionally specify priorityClass name for the pod
 ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
