@@ -1546,12 +1546,26 @@ nodeSelector:
 
 tolerations:
 
+#original one coming from default values.yaml
+#affinity:
+#  podAntiAffinity:
+#    preferredDuringSchedulingIgnoredDuringExecution:
+#      - weight: 1
+#        podAffinityTerm:
+#          topologyKey: "kubernetes.io/hostname"
+#          labelSelector:
+#            matchExpressions:
+#              - key: "app"
+#                operator: In
+#                values:
+#                  - weaviate
+
 affinity:
   podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
+    requiredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         podAffinityTerm:
-          topologyKey: "kubernetes.io/hostname"
+          topologyKey: "kubernetes.io/zone"
           labelSelector:
             matchExpressions:
               - key: "app"
